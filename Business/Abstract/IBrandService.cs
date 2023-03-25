@@ -16,5 +16,6 @@ namespace Business.Abstract
         IResult Update(Brand brand);
         IDataResult<Brand> Get(Expression<Func<Brand, bool>> filter);
         IDataResult<List<Brand>> GetAll(Expression<Func<Brand, bool>> filter = null);
+        IDataResult<Brand> GetById(int id);
     }
 }

@@ -47,7 +47,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(filter),Messages.SuccessGet);
         }
 
-      
+        public IDataResult<Brand> GetById(int id)
+        {
+            return new SuccessDataResult<Brand>(_brandDal.Get(x=>x.Id==id), Messages.SuccessGet);
+        }
 
         public IResult Update(Brand brand)
         {

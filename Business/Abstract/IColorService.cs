@@ -16,5 +16,6 @@ namespace Business.Abstract
         IResult Update(Color color);
         IDataResult<Color> Get(Expression<Func<Color, bool>> filter);
         IDataResult<List<Color>> GetAll(Expression<Func<Color, bool>> filter = null);
+        IDataResult<Color> GetById(int id);
     }
 }

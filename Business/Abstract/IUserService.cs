@@ -1,5 +1,5 @@
 ﻿using Core.Utilities.Results;
-using Entities.Concrete;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +16,7 @@ namespace Business.Abstract
         IResult Update(User user);
         IDataResult<User> Get(Expression<Func<User, bool>> filter);
         IDataResult<List<User>> GetAll(Expression<Func<User, bool>> filter = null);
+        List<OperationClaim> GetClaims(User user);
+        User GetByMail(string email);
     }
 }

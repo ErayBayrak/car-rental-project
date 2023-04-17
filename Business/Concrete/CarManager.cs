@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -24,7 +26,9 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheAspect]
         public IResult Add(Car car)
         {
             if(car.Description.Length>2 && car.DailyPrice > 0)
@@ -53,7 +57,8 @@ namespace Business.Concrete
 
         public IDataResult<Car> GetById(int id)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(x=>x.Id==id), Messages.SuccessGet);
+            var values = new SuccessDataResult<Car>(_carDal.Get(x => x.Id == id), Messages.SuccessGet);
+            return values;
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()

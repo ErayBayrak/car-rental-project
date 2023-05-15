@@ -1,5 +1,5 @@
 # car-rental-project
-An exapmle project that was made .Net Core with Entity Framework.
+An example project that was made .Net Core with Entity Framework.
  Used Technologies
  - Rest API
  - AOP (Aspect Oriented Programming)
